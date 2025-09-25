@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Generador de Palabras + Temporizador (90s)</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="description" content="Miniapp local para generar palabras por categorías con dificultad y un temporizador de 90 segundos. Sin rastreo.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app" role="application" aria-label="Generador de palabras con temporizador">
+    <header>
+      <div class="title">🎨 Pictionary Exprés — 90s</div>
+      <div class="badges">
+        <span class="badge">Hecho para Canva / Navegador</span>
+        <span class="badge">Sin conexión</span>
+        <span class="badge">ES</span>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section>
+        <div class="controls" aria-label="Controles">
+          <div class="row">
+            <select id="category" title="Categoría">
+              <option value="todas">Todas las categorías</option>
+              <option value="objetos">Objetos</option>
+              <option value="animales">Animales</option>
+              <option value="acciones">Acciones</option>
+              <option value="lugares">Lugares</option>
+              <option value="profesiones">Profesiones</option>
+              <option value="comida">Comida</option>
+              <option value="ebc">EBC</option>
+              <option value="negocios">Negocios</option>
+              <option value="mexicanismos">Mexicanismos</option>
+            </select>
+            <select id="difficulty" class="diff" title="Dificultad">
+              <option value="mix" selected>Mixta (ponderada)</option>
+              <option value="facil">Fácil</option>
+              <option value="media">Media</option>
+              <option value="dificil">Difícil</option>
+            </select>
+            <button id="btnGenerate" class="primary">🎲 Generar palabra</button>
+            <button id="btnStart" class="accent">⏱️ Iniciar 90s</button>
+            <button id="btnReset" class="ghost">↺ Reiniciar</button>
+          </div>
+          <div class="row">
+            <button id="btnHide" class="ghost" aria-pressed="false">🙈 Ocultar/mostrar palabra</button>
+            <button id="btnReveal" class="ghost">👁️ Revelar respuesta</button>
+            <button id="btnCopy" class="ghost">📋 Copiar palabra</button>
+            <button id="btnFull" class="ghost">⤢ Pantalla completa</button>
+            <span class="pill">Categoría: <span id="catLabel" class="category">-</span></span>
+          </div>
+          <div class="legend">
+            <span class="dot" style="background:#9bffb0"></span> Fácil
+            <span class="dot" style="background:#6ae3ff"></span> Media
+            <span class="dot" style="background:#ffb36b"></span> Difícil
+          </div>
+        </div>
+
+        <div class="word-card" aria-live="polite">
+          <div id="word" class="word" data-hidden="false">Pulsa “Generar palabra”</div>
+          <div class="hint">Consejo: comparte pantalla, oculta la palabra y haz que adivinen por el dibujo</div>
+        </div>
+      </section>
+
+      <aside>
+        <div class="timer" aria-label="Temporizador">
+          <div id="time" class="time">01:30</div>
+        </div>
+        <div class="progress" aria-hidden="true"><div id="bar" class="bar"></div></div>
+        <div class="controls" style="margin-top:12px">
+          <div class="row">
+            <button id="btn30" class="ghost">+30s</button>
+            <button id="btn-15" class="ghost">-15s</button>
+            <button id="btnBeep" class="ghost">🔔 Probar sonido</button>
+          </div>
+          <div class="row" style="opacity:.8">
+            <small>Fin del tiempo: alerta sonora + destello visual</small>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      <span>© 2025 — Miniapp local (HTML + JS). Sin anuncios, sin rastreo.</span>
+      <span class="spacer"></span>
+      <span>Atajo: <kbd>Espacio</kbd> inicia/pausa · <kbd>G</kbd> genera</span>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
